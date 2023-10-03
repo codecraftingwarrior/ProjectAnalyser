@@ -16,8 +16,6 @@ public class MethodVisitor extends ASTVisitor {
         //node.getBody().toString().split("\n")
     }
 
-
-
     public List<MethodDeclaration> getMethods() {
         return methods;
     }

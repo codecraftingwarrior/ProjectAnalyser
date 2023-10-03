@@ -11,8 +11,7 @@ public class ClassVisitor extends ASTVisitor {
     List<TypeDeclaration> classes = new ArrayList<>();
 
     public boolean visit(TypeDeclaration node) {
-        if(!node.isInterface())
-            classes.add(node);
+        if(!node.isInterface()) classes.add(node);
         return super.visit(node);
     }
 
