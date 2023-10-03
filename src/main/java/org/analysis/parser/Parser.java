@@ -131,10 +131,10 @@ public class Parser {
 
     // Extrait Informations des Méthodes
     public static void methodInfo(@NotNull CompilationUnit parse) {
-        MethodVisitor visitor = new MethodVisitor();
+        MethodDeclarationVisitor visitor = new MethodDeclarationVisitor();
         parse.accept(visitor);
 
-        for (MethodDeclaration ignored : visitor.getMethods())
+        for (MethodDeclaration ignored : visitor.getMethodDeclarations())
             methodCounter++;
     }
 
