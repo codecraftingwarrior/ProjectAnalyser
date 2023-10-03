@@ -12,7 +12,11 @@ public class MethodVisitor extends ASTVisitor {
     public boolean visit(MethodDeclaration node) {
         methods.add(node);
         return super.visit(node);
+        //condition body pas nul
+        //node.getBody().toString().split("\n")
     }
+
+
 
     public List<MethodDeclaration> getMethods() {
         return methods;

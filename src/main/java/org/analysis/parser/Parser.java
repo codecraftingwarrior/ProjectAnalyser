@@ -16,40 +16,50 @@ import java.util.Objects;
 
 public class Parser {
 
-    public static final String projectPath = "/Users/nat/Downloads/Visitor-Stockage";
+    public static final String projectPath = "/Users/nat/Downloads/org.anonbnr.design_patterns-main";
     public static final String projectSourcePath = projectPath + "/src";
     public static final String jrePath = "/System/Library/Frameworks/JavaVM.framework/";
-    public static int packageCounter = 0, classCounter = 0, methodCounter = 0, attributeCounter = 0, totalLineCounter = 0;
+    public static int packageNumber = 0, classNumber = 0, methodNumber = 0, attributeNumber = 0, totalLineCounter = 0;
+    private static final PackageVisitor packageVisit = new PackageVisitor();
+    private static final ClassVisitor classVisit = new ClassVisitor();
+    private static final MethodVisitor methodVisit = new MethodVisitor();
+    private static final AttributeVisitor attributeVisit = new AttributeVisitor();
 
     public static void main(String[] args) throws IOException {
 
-        // Lit Fichiers Java
+        // Récupère tout les fichiers Java du répertoire
         final File folder = new File(projectSourcePath);
         ArrayList<File> javaFiles = listJavaFilesForFolder(folder);
         totalLineCounter = lineCounter(javaFiles);
 
+        // Lit Fichiers Java
         for (File fileEntry : javaFiles) {
             String content = FileUtils.readFileToString(fileEntry, StandardCharsets.UTF_8);
             CompilationUnit parse = parse(content.toCharArray());
 
-            // Informations Packages
-            packageInfo(parse);
-            // Informations Classes
-            classInfo(parse);
-            // Informations Méthodes
-            methodInfo(parse);
-            // Informations Attributs
-            attributeInfo(parse);
+            // Visite Packages
+            parse.accept(packageVisit);
+            // Visite Classes
+            parse.accept(classVisit);
+            // Visite Méthodes
+            parse.accept(methodVisit);
+            // Visite Attributs
+            parse.accept(attributeVisit);
         }
 
-        System.out.println("Nombre de Classes Totales: " + classCounter);
+        packageNumber = packageVisit.getPackages().size();
+        classNumber = classVisit.getClasses().size();
+        methodNumber = methodVisit.getMethods().size();
+        attributeNumber = attributeVisit.getAttributes().size();
+
+        System.out.println("Nombre de Classes Totales: " + classNumber);
         System.out.println("Nombre de Ligne de Code de l'Application : " + totalLineCounter);
-        System.out.println("Nombre de Méthodes Totales: " + methodCounter);
-        System.out.println("Nombre de Packages Totales: " + packageCounter);
-        System.out.println("Nombre Moyen de Méthodes par Classes : " + (methodCounter/classCounter));
-        System.out.println("Nombre Moyen de Ligne de Code par Méthodes : " + (totalLineCounter/methodCounter));
-        System.out.println("Nombre d'Attributs Totals : " + attributeCounter);
-        System.out.println("Nombre Moyen d'Attributs par Classes : " + (attributeCounter/classCounter));
+        System.out.println("Nombre de Méthodes Totales: " + methodNumber);
+        System.out.println("Nombre de Packages Totales: " + packageNumber);
+        System.out.println("Nombre Moyen de Méthodes par Classes : " + (methodNumber/classNumber));
+        System.out.println("Nombre Moyen de Ligne de Code par Méthodes : " + (totalLineCounter/methodNumber));
+        System.out.println("Nombre d'Attributs Totals : " + attributeNumber);
+        System.out.println("Nombre Moyen d'Attributs par Classes : " + (attributeNumber/classNumber));
     }
 
     // Comptage des lignes de code de tout le fichier
@@ -62,6 +72,7 @@ public class Parser {
         return totalLines;
     }
 
+    // Comptage des lignes de code d'un fichier
     public static int countLines(File file) {
         int lines = 0;
 
@@ -109,41 +120,5 @@ public class Parser {
         parser.setSource(classSource);
 
         return (CompilationUnit) parser.createAST(null); // create and parse
-    }
-
-    // Extrait Informations des Packages
-    public static void packageInfo(CompilationUnit parse) {
-        PackageVisitor visitor = new PackageVisitor();
-        parse.accept(visitor);
-
-        for (PackageDeclaration ignored : visitor.getPackages())
-            packageCounter++;
-    }
-
-    // Extrait Informations des Classes
-    public static void classInfo(@NotNull CompilationUnit parse) {
-        ClassVisitor visitor = new ClassVisitor();
-        parse.accept(visitor);
-
-        for (TypeDeclaration ignored : visitor.getClasses())
-            classCounter++;
-    }
-
-    // Extrait Informations des Méthodes
-    public static void methodInfo(@NotNull CompilationUnit parse) {
-        MethodVisitor visitor = new MethodVisitor();
-        parse.accept(visitor);
-
-        for (MethodDeclaration ignored : visitor.getMethods())
-            methodCounter++;
-    }
-
-    // Extrait Informations des Attributs
-    public static void attributeInfo(@NotNull CompilationUnit parse) {
-        AttributeVisitor visitor = new AttributeVisitor();
-        parse.accept(visitor);
-
-        for (FieldDeclaration ignored : visitor.getAttributes())
-            attributeCounter++;
     }
 }
