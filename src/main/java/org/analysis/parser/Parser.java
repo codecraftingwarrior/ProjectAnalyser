@@ -1,4 +1,5 @@
 package org.analysis.parser;
+
 import org.analysis.visitor.*;
 import org.apache.commons.io.FileUtils;
 import org.eclipse.jdt.core.JavaCore;
@@ -19,11 +20,11 @@ public class Parser {
     public static final String projectPath = "/Users/nat/Downloads/org.anonbnr.design_patterns-main";
     public static final String projectSourcePath = projectPath + "/src";
     public static final String jrePath = "/System/Library/Frameworks/JavaVM.framework/";
-    public static int packageNumber = 0, classNumber = 0, methodNumber = 0, attributeNumber = 0, totalLineCounter = 0;
     private static final PackageVisitor packageVisit = new PackageVisitor();
     private static final ClassVisitor classVisit = new ClassVisitor();
     private static final MethodVisitor methodVisit = new MethodVisitor();
     private static final AttributeVisitor attributeVisit = new AttributeVisitor();
+    public static int packageNumber = 0, classNumber = 0, methodNumber = 0, attributeNumber = 0, totalLineCounter = 0;
 
     public static void main(String[] args) throws IOException {
 
@@ -66,8 +67,7 @@ public class Parser {
     public static int lineCounter(@NotNull ArrayList<File> javaFiles){
         int totalLines = 0;
 
-        for (File file : javaFiles)
-            totalLines += countLines(file);
+        for (File file : javaFiles) totalLines += countLines(file);
 
         return totalLines;
     }
@@ -77,8 +77,7 @@ public class Parser {
         int lines = 0;
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            while (reader.readLine() != null)
-                lines++;
+            while (reader.readLine() != null) lines++;
         } catch (IOException e) {
             e.printStackTrace();
         }
