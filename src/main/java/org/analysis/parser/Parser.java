@@ -24,7 +24,7 @@ public class Parser {
     private static final ClassVisitor classVisit = new ClassVisitor();
     private static final MethodVisitor methodVisit = new MethodVisitor();
     private static final AttributeVisitor attributeVisit = new AttributeVisitor();
-    public static int packageNumber = 0, classNumber = 0, methodNumber = 0, attributeNumber = 0, totalLineCounter = 0;
+    public static int packageNumber = 0, classNumber = 0, methodNumber = 0, attributeNumber = 0, totalLineCounter = 0, totalLineMethod = 0;
 
     public static void main(String[] args) throws IOException {
 
@@ -44,6 +44,8 @@ public class Parser {
             parse.accept(classVisit);
             // Visite Méthodes
             parse.accept(methodVisit);
+            //Nombre total de ligne dans les méthodes
+            totalLineMethod += methodVisit.getNumberLineMethod();
             // Visite Attributs
             parse.accept(attributeVisit);
         }
@@ -58,7 +60,8 @@ public class Parser {
         System.out.println("Nombre de Méthodes Totales: " + methodNumber);
         System.out.println("Nombre de Packages Totales: " + packageNumber);
         System.out.println("Nombre Moyen de Méthodes par Classes : " + (methodNumber/classNumber));
-        System.out.println("Nombre Moyen de Ligne de Code par Méthodes : " + (totalLineCounter/methodNumber));
+        System.out.println("Nombre Total de Ligne de Code dans toutes les Méthodes : " + totalLineMethod);
+        System.out.println("Nombre Moyen de Ligne de Code par Méthodes : " + (totalLineMethod/methodNumber));
         System.out.println("Nombre d'Attributs Totals : " + attributeNumber);
         System.out.println("Nombre Moyen d'Attributs par Classes : " + (attributeNumber/classNumber));
     }

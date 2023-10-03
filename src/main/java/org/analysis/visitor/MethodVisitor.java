@@ -8,15 +8,17 @@ import org.eclipse.jdt.core.dom.MethodDeclaration;
 
 public class MethodVisitor extends ASTVisitor {
     List<MethodDeclaration> methods = new ArrayList<>();
+    int numberLineMethod = 0;
 
     public boolean visit(MethodDeclaration node) {
         methods.add(node);
+        if(node.getBody() != null) numberLineMethod = node.getBody().toString().split("\n").length;
         return super.visit(node);
-        //condition body pas nul
-        //node.getBody().toString().split("\n")
     }
 
     public List<MethodDeclaration> getMethods() {
         return methods;
     }
+
+    public int getNumberLineMethod() { return numberLineMethod; }
 }
