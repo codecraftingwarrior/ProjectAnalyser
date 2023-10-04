@@ -127,4 +127,11 @@ public class Analyzer {
 
         return methodCounter;
     }
+
+    public int getPackageCount() throws  IOException {
+        int packageCount = 0;
+
+
+        return packageCount;
+    }
 }

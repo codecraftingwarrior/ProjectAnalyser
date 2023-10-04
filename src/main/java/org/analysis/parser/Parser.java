@@ -1,4 +1,5 @@
 package org.analysis.parser;
+
 import org.analysis.visitor.*;
 import org.apache.commons.io.FileUtils;
 import org.eclipse.jdt.core.JavaCore;
@@ -46,14 +47,14 @@ public class Parser {
         System.out.println("Nombre de Ligne de Code de l'Application : " + totalLineCounter);
         System.out.println("Nombre de Méthodes Totales: " + methodCounter);
         System.out.println("Nombre de Packages Totales: " + packageCounter);
-        System.out.println("Nombre Moyen de Méthodes par Classes : " + (methodCounter/classCounter));
-        System.out.println("Nombre Moyen de Ligne de Code par Méthodes : " + (totalLineCounter/methodCounter));
+        System.out.println("Nombre Moyen de Méthodes par Classes : " + (methodCounter / classCounter));
+        System.out.println("Nombre Moyen de Ligne de Code par Méthodes : " + (totalLineCounter / methodCounter));
         System.out.println("Nombre d'Attributs Totals : " + attributeCounter);
-        System.out.println("Nombre Moyen d'Attributs par Classes : " + (attributeCounter/classCounter));
+        System.out.println("Nombre Moyen d'Attributs par Classes : " + (attributeCounter / classCounter));
     }
 
     // Comptage des lignes de code de tout le fichier
-    public static int lineCounter(@NotNull ArrayList<File> javaFiles){
+    public static int lineCounter(@NotNull ArrayList<File> javaFiles) {
         int totalLines = 0;
 
         for (File file : javaFiles)
@@ -102,10 +103,10 @@ public class Parser {
 
         parser.setUnitName("");
 
-        String[] sources = { projectSourcePath };
+        String[] sources = {projectSourcePath};
         String[] classpath = {jrePath};
 
-        parser.setEnvironment(classpath, sources, new String[] { "UTF-8"}, true);
+        parser.setEnvironment(classpath, sources, new String[]{"UTF-8"}, true);
         parser.setSource(classSource);
 
         return (CompilationUnit) parser.createAST(null); // create and parse
