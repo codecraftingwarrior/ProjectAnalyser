@@ -5,16 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7c46598-c652-41fa-9c07-17edbc56c599" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/analysis/cli/AbstractCLI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/analysis/cli/processor/ComplexInputProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/analysis/cli/processor/IntegerInputProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/analysis/cli/processor/NonZeroIntegerInputProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/analysis/Analyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/analysis/core/Analyzer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/analysis/MainCLI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/analysis/MainCLI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/analysis/cli/processor/ComplexInputProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/analysis/cli/processor/ComplexInputProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/analysis/cli/processor/IntegerInputProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/analysis/cli/processor/IntegerInputProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/analysis/cli/processor/NonZeroIntegerInputProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/analysis/cli/processor/NonZeroIntegerInputProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/analysis/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/analysis/parser/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/analysis/test/Parser_test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/analysis/visitor/MethodVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/analysis/visitor/MethodDeclarationVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/analysis/visitor/ClassVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/analysis/visitor/TypeDeclarationVisitor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,22 +41,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "aspect.path.notification.shown": "true",
-    "last_opened_file_path": "/Users/hadji/Documents/M2/Evolution/ProjectAnalyser/src/main/java/org/analysis",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.fileTypes",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;aspect.path.notification.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/hadji/Documents/M2/Evolution/ProjectAnalyser/src/main/java/org/analysis&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/org/analysis" />

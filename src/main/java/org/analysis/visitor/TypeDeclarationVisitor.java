@@ -6,7 +6,7 @@ import java.util.List;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.TypeDeclaration;
 
-public class ClassVisitor extends ASTVisitor {
+public class TypeDeclarationVisitor extends ASTVisitor {
 
     List<TypeDeclaration> classes = new ArrayList<>();
 

@@ -21,10 +21,10 @@ public class Parser {
     public static final String projectSourcePath = projectPath + "/src";
     public static final String jrePath = "/System/Library/Frameworks/JavaVM.framework/";
     private static final PackageVisitor packageVisit = new PackageVisitor();
-    private static final ClassVisitor classVisit = new ClassVisitor();
-    private static final MethodVisitor methodVisit = new MethodVisitor();
+    private static final TypeDeclarationVisitor classVisit = new TypeDeclarationVisitor();
+    private static final MethodDeclarationVisitor methodVisit = new MethodDeclarationVisitor();
     private static final AttributeVisitor attributeVisit = new AttributeVisitor();
-    public static int packageNumber = 0, classNumber = 0, methodNumber = 0, attributeNumber = 0, totalLineCounter = 0, totalLineMethod = 0;
+    public static int packageNumber = 0, classNumber = 0, methodNumber = 0, attributeNumber = 0, totalLineCounter = 0, totalLineMethod = 0, packageCounter = 0, classCounter = 0, methodCounter = 0, attributeCounter = 0;
 
     public static void main(String[] args) throws IOException {
 
@@ -52,7 +52,7 @@ public class Parser {
 
         packageNumber = packageVisit.getPackages().size();
         classNumber = classVisit.getClasses().size();
-        methodNumber = methodVisit.getMethods().size();
+        methodNumber = methodVisit.getMethodDeclarations().size();
         attributeNumber = attributeVisit.getAttributes().size();
 
         System.out.println("Nombre de Classes Totales: " + classNumber);
@@ -129,13 +129,13 @@ public class Parser {
         PackageVisitor visitor = new PackageVisitor();
         parse.accept(visitor);
 
-        for (PackageDeclaration ignored : visitor.getPackages())
+        for (String ignored : visitor.getPackages())
             packageCounter++;
     }
 
     // Extrait Informations des Classes
     public static void classInfo(@NotNull CompilationUnit parse) {
-        ClassVisitor visitor = new ClassVisitor();
+        TypeDeclarationVisitor visitor = new TypeDeclarationVisitor();
         parse.accept(visitor);
 
         for (TypeDeclaration ignored : visitor.getClasses())

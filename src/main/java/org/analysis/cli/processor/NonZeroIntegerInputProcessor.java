@@ -4,9 +4,8 @@ import java.util.function.Predicate;
 
 public class NonZeroIntegerInputProcessor extends IntegerInputProcessor {
 
-    @Override
-    protected String getMessage() {
-        return "Saisir un entier non nul : ";
+    public NonZeroIntegerInputProcessor(String msg) {
+        super(msg);
     }
 
     @Override

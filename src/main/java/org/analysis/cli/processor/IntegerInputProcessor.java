@@ -4,9 +4,9 @@ import java.lang.reflect.Method;
 import java.util.function.Predicate;
 
 public class IntegerInputProcessor extends ComplexInputProcessor<Integer> {
-    @Override
-    protected String getMessage() {
-        return "Saisir un entier : ";
+
+    public IntegerInputProcessor(String msg) {
+        super(msg);
     }
 
     @Override

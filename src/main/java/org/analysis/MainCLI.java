@@ -1,6 +1,8 @@
 package org.analysis;
 
 import org.analysis.cli.AbstractCLI;
+import org.analysis.cli.processor.IntegerInputProcessor;
+import org.analysis.core.Analyzer;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -62,6 +64,7 @@ public class MainCLI extends AbstractCLI {
         stringBuilder.append("\n11. Les classes qui possèdent plus de X méthodes (la valeur de X est donnée).");
         stringBuilder.append("\n12. Les 10% des méthodes qui possèdent le plus grand nombre de lignes de code (par classe).");
         stringBuilder.append("\n13. Le nombre maximal de paramètres par rapport à toutes les méthodes de l’application.");
+        stringBuilder.append("\n14. Visualiser le graphe d'appel de l'application.");
         stringBuilder.append("\n---------------------------------");
 
         System.out.println(stringBuilder);
@@ -90,6 +93,38 @@ public class MainCLI extends AbstractCLI {
                 break;
             case "3":
                 System.out.println("Nombre de Méthodes Totales: " + analyzer.getMethodCount());
+                break;
+            case "4":
+                System.out.println("Nombre de Packages Totales: " + analyzer.getPackageCount());
+                break;
+            case "5":
+                System.out.println("Nombre Moyen de Méthodes par Classes : " + analyzer.getAverageMethodCountPerClass());
+                break;
+            case "6":
+                System.out.println("Nombre Moyen de Ligne de Code par Méthodes : " + analyzer.getAverageLOCPerMethod());
+                break;
+            case "7":
+                System.out.println("Nombre Moyen d'Attributs par Classes : " + analyzer.getAverageAttributeCountPerClass());
+                break;
+            case "8":
+                analyzer.show10PercentClassWithHighestNumberOfMethods();
+                break;
+            case "9":
+                analyzer.show10PercentClassWithHighestNumberOfAttributes();
+                break;
+            case "10":
+                analyzer.showClassIn2PreviousCategories();
+                break;
+            case "11":
+                IntegerInputProcessor xProcessor = new IntegerInputProcessor("Saisir la valeur de X : ");
+                int x  = xProcessor.process();
+                analyzer.showClassWithMoreThanXMethods(x);
+                break;
+            case "12":
+                analyzer.show10PercentMethodsWithHighestLOC();
+                break;
+            case "13":
+                System.out.println("\nLe nombre maximal de paramètres par rapport à toutes les méthodes de l’application : " + analyzer.getMaximumNumberOfParameter());
                 break;
         }
 

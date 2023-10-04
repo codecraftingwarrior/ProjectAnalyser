@@ -8,20 +8,17 @@ import java.lang.reflect.Method;
 import java.util.function.Predicate;
 
 public abstract class ComplexInputProcessor<T> {
-    private final String message;
+    protected final String message;
     protected BufferedReader inputReader = new BufferedReader(new InputStreamReader(System.in));
     private final Method parser;
     private final Predicate<String> validator;
     protected T parameter;
 
-    public ComplexInputProcessor() {
-        message = getMessage();
+    public ComplexInputProcessor(String msg) {
+        message = msg;
         parser = getParser();
         validator = getValidator();
     }
-
-
-    protected abstract String getMessage();
 
     protected abstract Predicate<String> getValidator();
 
