@@ -10,3 +10,9 @@ Pour exécuter ce projet, suivez ces étapes simples :
 
    ```shell
    git clone https://github.com/votre-utilisateur/nom-du-projet.git
+
+3. Une fois le projet ouvert dans IntelliJ IDEA, recherchez le fichier principal ou le point d'entrée de votre application (par exemple, `Main.java`).
+
+4. Cliquez avec le bouton droit sur le fichier principal, puis sélectionnez "Run" (Exécuter) dans le menu contextuel.
+
+5. L'application devrait maintenant être en cours d'exécution. Vous verrez la sortie de l'application dans la fenêtre de console d'IntelliJ IDEA.
