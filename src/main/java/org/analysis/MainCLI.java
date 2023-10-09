@@ -4,6 +4,7 @@ import org.analysis.cli.AbstractCLI;
 import org.analysis.cli.processor.IntegerInputProcessor;
 import org.analysis.core.Analyzer;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -25,7 +26,9 @@ public class MainCLI extends AbstractCLI {
 
     private static void init() {
         try {
-            System.out.print("URL absolue de votre projet >>  ");
+            String projetPath = System.getProperty("user.dir");
+            System.setProperty("org.graphstream.ui", "swing");
+            System.out.printf("URL absolue de votre projet [%s] >>  ", Analyzer.getDefaultProjectDirPath());
             String projectPath = inputReader.readLine();
             Path path = Paths.get(projectPath);
 
@@ -35,7 +38,7 @@ public class MainCLI extends AbstractCLI {
             }
             analyzer = Analyzer.getInstance(projectPath);
 
-            for (int i = 0; i <= 13; i++)
+            for (int i = 0; i <= 14; i++)
                 validChoices.add(String.valueOf(i));
 
             MainCLI mainCLI = new MainCLI();
@@ -125,6 +128,9 @@ public class MainCLI extends AbstractCLI {
                 break;
             case "13":
                 System.out.println("\nLe nombre maximal de paramètres par rapport à toutes les méthodes de l’application : " + analyzer.getMaximumNumberOfParameter());
+                break;
+            case "14":
+                analyzer.buildAndShowCallGraph();
                 break;
         }
 
